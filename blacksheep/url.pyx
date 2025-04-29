@@ -175,7 +175,10 @@ cpdef URL build_absolute_url(
             bytes path
         ):
 
-            cdef const char *schemab, *hostb, *bp, *pb
+            cdef const char *schemab
+            cdef const char *hostb 
+            cdef const char *bp
+            cdef const char *pb
             cdef Py_ssize_t sl, hl, bpl, pl
             cdef Py_ssize_t off_bp_start, off_bp_end, len_base_clean
             cdef Py_ssize_t off_p_start, off_p_end, len_path_clean
