@@ -2,6 +2,7 @@
 
 
 cyt:
+	cython blacksheep/urlb.pyx
 	cython blacksheep/url.pyx
 	cython blacksheep/exceptions.pyx
 	cython blacksheep/headers.pyx
@@ -10,6 +11,7 @@ cyt:
 	cython blacksheep/messages.pyx
 	cython blacksheep/scribe.pyx
 	cython blacksheep/baseapp.pyx
+
 
 compile: cyt
 	python3 setup.py build_ext --inplace
