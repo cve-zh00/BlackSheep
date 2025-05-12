@@ -215,6 +215,21 @@ _types_handled_with_query = {
     list,
     set,
     tuple,
+    list[str],
+    list[int],
+    list[float],
+    list[bool],
+    list[UUID],
+    tuple[str],
+    tuple[int],
+    tuple[float],
+    tuple[bool],
+    tuple[UUID],
+    set[str],
+    set[int],
+    set[float],
+    set[bool],
+    set[UUID],
     List[str],
     List[int],
     List[float],
@@ -687,10 +702,12 @@ def get_streaming_response_class(object_type):
     Returns the kind of Response class used to handle objects of the given type, or None
     if None is configured.
     """
-    try:
-        return _STREAMING_TYPES[object_type]
-    except KeyError:
-        return None
+    for _class in object_type.__mro__:
+        try:
+            return _STREAMING_TYPES[_class]
+        except KeyError:
+            pass
+    return None
 
 
 def _is_wrapped_function(func):
